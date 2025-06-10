@@ -27,12 +27,12 @@
       id="myModel"
       gltf-model="./zombie.glb"
       position="0 -0.8 -6"
-      scale="1.5 1.5 1.5"
+      scale="2 2 2"
       visible="false"
     ></a-entity>
     
     <!-- 360度画像の背景 -->
-    <a-sky id="sky" src="R0010034.JPG" rotation="0 0 0"></a-sky>
+    <a-sky id="sky" src="R0010219.JPG" rotation="0 80 0"></a-sky>
     
     <!-- 音声エンティティ -->
     <a-entity id="bgm" sound="src: url(bgm01.mp3); autoplay: false; loop: true;"></a-entity>
@@ -104,15 +104,16 @@
           // anime03終了後（5.133秒後）anime05へ
           setTimeout(function() {
             console.log('anime03終了。anime05再生＆移動＆sound02再生');
+            modelEl.setAttribute('position', '0 -0.8 -3');
             modelEl.setAttribute('animation-mixer', {
               clip: 'anime05',
               loop: 'false',
-              repetitions: '2',
+              repetitions: '1',
               timeScale: '1',
               clampWhenFinished: 'true'
             });
             // anime05の移動
-            modelEl.setAttribute('animation__position', 'property: position; to: 0 -0.8 -2; dur: 2366; easing: linear; loop: false');
+            // modelEl.setAttribute('animation__position', 'property: position; to: 0 -0.8 -2; dur: 2366; easing: linear; loop: false');
             sound2El.components.sound.playSound();
 
             // anime05終了後（2.366秒×2=4.732秒後）anime01へ
@@ -149,7 +150,7 @@
                   window.location.href = '../vr/';
                 }, 900 * 1); // 0.9秒
               }, 5300 * 2); // 10.6秒
-            }, 2366 * 2); // 4.732秒
+            }, 2366 * 1); // 4.732秒
           }, 5133); // 5.133秒
         }, 2000); // 2秒
       }
